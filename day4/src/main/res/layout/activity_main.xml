@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.xk.admin.day4.MainActivity">
+
+    <com.xk.admin.day4.ColorTrackTextView
+        android:id="@+id/color_track_tv"
+        app:changeColor="@color/colorAccent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+      />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="左到右"
+        android:onClick="leftToRight"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="右到左"
+        android:onClick="rightToLeft"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
