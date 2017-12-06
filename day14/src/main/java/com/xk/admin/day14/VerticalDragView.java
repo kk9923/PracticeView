@@ -101,64 +101,32 @@ public class VerticalDragView extends FrameLayout {
         }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        dragHelper.processTouchEvent(event);
-        return true;
-    }
     // 现象就是ListView可以滑动，但是菜单滑动没有效果了
     private float mDownY;
 //  because ACTION_DOWN was not received for this pointer before ACTION_MOVE.
 // TODO: 2017/11/15    问题 ？   dragView 处于 menuView 下方时， menuView 和 dragView 都无法响应点击事件
-//    @Override
-//    public boolean onInterceptTouchEvent(MotionEvent ev) {
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
 //        if (mMenuIsOpen){
 //            return true;
 //        }
-//        // 向下滑动拦截，不要给ListView做处理
-//        // 谁拦截谁 父View拦截子View ，但是子 View 可以调这个方法
-//        // requestDisallowInterceptTouchEvent 请求父View不要拦截，改变的其实就是 mGroupFlags 的值
-//        switch (ev.getAction()) {
-//            case MotionEvent.ACTION_DOWN:
-//                mDownY = ev.getY();
-//               // System.out.println(mDownY);
-//                // 让 DragHelper 拿一个完整的事件
-//                dragHelper.processTouchEvent(ev);
-//                break;
-//            case MotionEvent.ACTION_MOVE:
-//                float moveY = ev.getY();
-//                if ((moveY - mDownY) > 0 && !canChildScrollUp()) {
-//                    //当手指向下划，(moveY - mDownY) > 0
-//                  //   代码来自于SwipeRefreshLayout中的判断  子View还能向下滑动   canChildScrollUp()
-//                 //    向下滑动 && 滚动到了顶部（不能向下滑动 ），拦截不让ListView做处理
-//                    return true;
-//                }
-//                break;
-//        }
-//        return super.onInterceptTouchEvent(ev);
-//    }
-
-    // TODO: 2017/11/15  修改版  dragView 和 menuView  都可以响应点击事件    
-    // TODO: 2017/11/15  问题 ？  1 : 滑动时不连续： 当拖动dragView向上划，滑倒顶部时，继续划就划不动了，要送开手指才能dragView才能继续划
-    // TODO: 2017/11/15           2 :  当拖动dragView向下划，滑倒顶部时，继续划就划不动了，要送开手指才能dragView才能继续划动到menuView的下面（即松开手指，再次按下时dragHelper才能响应事件）
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
         // 向下滑动拦截，不要给ListView做处理
         // 谁拦截谁 父View拦截子View ，但是子 View 可以调这个方法
         // requestDisallowInterceptTouchEvent 请求父View不要拦截，改变的其实就是 mGroupFlags 的值
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mDownY = ev.getY();
-                // System.out.println(mDownY);
+               // System.out.println(mDownY);
                 // 让 DragHelper 拿一个完整的事件
                 dragHelper.processTouchEvent(ev);
                 break;
             case MotionEvent.ACTION_MOVE:
                 float moveY = ev.getY();
+           //     System.out.println(moveY);
                 if ((moveY - mDownY) > 0 && !canChildScrollUp()) {
                     //当手指向下划，(moveY - mDownY) > 0
-                    //   代码来自于SwipeRefreshLayout中的判断  子View还能向下滑动   canChildScrollUp()
-                    //    向下滑动 && 滚动到了顶部（不能向下滑动 ），拦截不让ListView做处理
+                  //   代码来自于SwipeRefreshLayout中的判断  子View还能向下滑动   canChildScrollUp()
+                 //    向下滑动 && 滚动到了顶部（不能向下滑动 ），拦截不让ListView做处理
                     return true;
                 } else  if ((moveY - mDownY) < 0 && !canChildScrollUp() && mMenuIsOpen){
                     return true;
@@ -166,6 +134,49 @@ public class VerticalDragView extends FrameLayout {
                 break;
         }
         return super.onInterceptTouchEvent(ev);
+    }
+
+    // TODO: 2017/11/15  修改版  dragView 和 menuView  都可以响应点击事件    
+    // TODO: 2017/11/15  问题 ？  1 : 滑动时不连续： 当拖动dragView向上划，滑倒顶部时，继续划就划不动了，要送开手指才能dragView才能继续划
+    // TODO: 2017/11/15           2 :  当拖动dragView向下划，滑倒顶部时，继续划就划不动了，要送开手指才能dragView才能继续划动到menuView的下面（即松开手指，再次按下时dragHelper才能响应事件）
+//    @Override
+//    public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        // 向下滑动拦截，不要给ListView做处理
+//        // 谁拦截谁 父View拦截子View ，但是子 View 可以调这个方法
+//        // requestDisallowInterceptTouchEvent 请求父View不要拦截，改变的其实就是 mGroupFlags 的值
+//        switch (ev.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                mDownY = ev.getY();
+//                // 让 DragHelper 拿一个完整的事件
+//                dragHelper.processTouchEvent(ev);
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                float moveY = ev.getY();
+//                System.out.println(moveY);
+//                if ((moveY - mDownY) > 0 && !canChildScrollUp()) {
+//                    //当手指向下划，(moveY - mDownY) > 0
+//                    //   代码来自于SwipeRefreshLayout中的判断  子View还能向下滑动   canChildScrollUp()
+//                    //    向下滑动 && 滚动到了顶部（不能向下滑动 ），拦截不让ListView做处理
+//                    return true;
+//                } else  if ((moveY - mDownY) < 0 && !canChildScrollUp() && mMenuIsOpen){
+//                    return true;
+//                }
+//                break;
+//        }
+//        return super.onInterceptTouchEvent(ev);
+//    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+//        switch (event.getAction()){
+//            case MotionEvent.ACTION_MOVE :
+//                float moveY = event.getY();
+//                if ((moveY - mDownY) < 0 && dragView.getTop()<=0 && mMenuIsOpen){
+//                   return true;
+//               }
+//                break;
+//        }
+        dragHelper.processTouchEvent(event);
+        return true;
     }
     /**
      * @return Whether it is possible for the child view of this layout to
