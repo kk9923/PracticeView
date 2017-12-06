@@ -11,11 +11,11 @@ import android.widget.RelativeLayout;
 
 public class LoveLayout extends RelativeLayout {
     public LoveLayout(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public LoveLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
     public LoveLayout(Context context, AttributeSet attrs, int defStyleAttr) {
