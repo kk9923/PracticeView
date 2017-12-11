@@ -5,7 +5,7 @@
     android:id="@+id/rootFirstPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@android:color/holo_orange_dark"
+    android:background="@android:color/holo_orange_dark"
     tools:ignore="ContentDescription">
 
     <ImageView
@@ -16,15 +16,12 @@
         android:src="@mipmap/s_0_1"
         app:layout_heightPercent="35%"
         app:layout_widthPercent="50%"
-        app:translationXIn="0.4"
-        app:translationYIn="0.4"
-        app:translationZIn="0.4"
-        app:translationYOut="0.4"
-        app:translationXOut="0.4" />
+         />
 
     <ImageView
         android:id="@+id/ivSecondImage"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -32,11 +29,8 @@
         app:layout_heightPercent="10%"
         app:layout_marginRightPercent="12%"
         app:layout_marginTopPercent="27%"
-        app:layout_widthPercent="12%"
-        app:translationXIn="0.12"
-        app:translationYIn="0.82"
-        app:translationYOut="0.82"
-        app:translationXOut="0.12" />
+        app:layout_widthPercent="12%"/>
+
 
     <ImageView
         android:id="@+id/ivThirdImage"
@@ -49,9 +43,7 @@
         app:layout_marginLeftPercent="14%"
 
         app:layout_marginTopPercent="49%"
-        app:layout_widthPercent="30%"
-        app:translationXIn="0.16"
-        app:translationXOut="0.16" />
+        app:layout_widthPercent="30%" />
 
     <ImageView
         android:id="@+id/ivFourthImage"
@@ -61,9 +53,7 @@
         app:layout_heightPercent="15%"
         app:layout_marginLeftPercent="14%"
         app:layout_marginTopPercent="39%"
-        app:layout_widthPercent="20%"
-        app:translationXIn="0.02"
-        app:translationXOut="0.02" />
+        app:layout_widthPercent="20%" />
 
     <ImageView
         android:id="@+id/ivFifthImage"
@@ -76,9 +66,7 @@
 
         app:layout_marginTopPercent="22%"
 
-        app:layout_widthPercent="45%"
-        app:translationXIn="0.06"
-        app:translationXOut="0.06" />
+        app:layout_widthPercent="45%" />
 
     <ImageView
         android:id="@+id/ivSixthImage"
@@ -91,9 +79,7 @@
         app:layout_marginLeftPercent="4%"
 
         app:layout_marginTopPercent="26%"
-        app:layout_widthPercent="6%"
-        app:translationXIn="0.18"
-        app:translationXOut="0.18" />
+        app:layout_widthPercent="6%" />
 
     <ImageView
         android:id="@+id/ivSeventhImage"
@@ -106,9 +92,7 @@
         app:layout_marginLeftPercent="14%"
 
         app:layout_marginTopPercent="25%"
-        app:layout_widthPercent="9%"
-        app:translationXIn="0.28"
-        app:translationXOut="0.28" />
+        app:layout_widthPercent="9%" />
 
     <ImageView
         android:id="@+id/ivEighthImage"
@@ -117,11 +101,11 @@
 
         android:src="@mipmap/s_0_8"
         app:layout_heightPercent="6%"
+
         app:layout_marginLeftPercent="77%"
+
         app:layout_marginTopPercent="38%"
-        app:layout_widthPercent="8%"
-        app:translationXIn="0.34"
-        app:translationXOut="0.34" />
+        app:layout_widthPercent="8%" />
 
     <TextView
         android:layout_width="wrap_content"
